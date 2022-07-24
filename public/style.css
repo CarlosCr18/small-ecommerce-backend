@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap");
+html,
+body {
+  height: 100vh;
+  font-family: "Sawarabi Mincho", serif;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+  place-content: center;
+  gap: 2rem;
+}
+
+main {
+  max-width: 90%;
+  display: grid;
+  place-items: center;
+  place-content: center;
+}
