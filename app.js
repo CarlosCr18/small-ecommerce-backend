@@ -1,7 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: "*",
+		optionsSuccessStatus: 200, // For legacy browser support
+		methods: "GET",
+	})
+);
 app.use(express.static("public"));
 let bodyParser = require("body-parser");
 
@@ -147,7 +153,7 @@ app.get("/", (req, res) => {
 	res.status(200).sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/api/getList", cors(), function (req, res) {
+app.get("/api/getList", function (req, res) {
 	let response = products.list;
 	res.status(200).json({ response });
 });
@@ -157,7 +163,6 @@ app.get("/api/orders", function (req, res) {
 	res.status(200).json({ response });
 });
 app.post("/api/detail", jsonParser, function (req, res) {
-	console.log(req.body);
 	let response = myOrders.filter((order, i) => {
 		return order.id == req.body.order_id;
 	});
